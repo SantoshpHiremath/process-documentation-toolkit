@@ -1,8 +1,7 @@
 """
 Change-request workflow logic: filtering by status, summarizing
-open/pending work per process -- the posting's "you take over requests
-for documentation and implementation in the tool" task, modeled as a
-real, queryable workflow rather than an unordered list.
+open/pending work per process -- the handling of requests for
+documentation and implementation in the tool, modeled as a real, queryable workflow rather than an unordered list.
 """
 
 from __future__ import annotations

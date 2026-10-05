@@ -1,34 +1,28 @@
 # Process Documentation Toolkit
 
-A real, tested Python project that models a structured business-process
+A tested Python project that models a structured business-process
 register — typed process steps, a change-request workflow, integrity
-validation, and real flowchart rendering — built specifically for
-Infineon's "Working Student - Business Process Management" posting,
-whose exact task list (support/coordinate processes, document business
-processes in a professional tool, editorial work and graphical
-representation of processes, take over documentation/implementation
-requests) had no prior evidence anywhere in this portfolio.
+validation, and flowchart rendering. I built it to cover the core of
+process documentation work: supporting and coordinating processes,
+documenting them in a structured tool, turning them into graphical
+representations, and handling documentation and implementation requests.
 
-## What this is (read before citing anywhere)
+## Scope
 
 **All process content is invented.** `src/process_model.py` defines two
 fictional processes (Supplier Onboarding, Expense Approval) modeled
 loosely on plausible enterprise workflows, with steps, owners, and a
-handful of realistic change requests — none of it reflects any real
-Infineon process, tool, or data.
+handful of realistic change requests — none of it reflects a real
+company's process, tool, or data.
 
-**This uses Graphviz, not a licensed enterprise process-modeling tool.**
-The posting names "documentation... in a professional tool," which most
-naturally means something like Signavio, ARIS, or Visio — none of which
-were available or licensable in this build environment. `src/flowchart.py`
-renders real, working flowchart images from the structured process data
-using open-source Graphviz instead. This demonstrates the underlying
-skill (turning a structured process definition into a correct, legible
-graphical representation, and catching a broken definition before it's
-published) honestly, not a claim of hands-on experience with a specific
-commercial BPM tool.
+**Diagrams are rendered with Graphviz, not a licensed enterprise
+process-modeling tool.** Tools like Signavio, ARIS, or Visio weren't
+available to me, so `src/flowchart.py` renders flowchart images from the
+structured process data using open-source Graphviz. The skill it
+demonstrates is turning a structured process definition into a correct,
+legible diagram, and catching a broken definition before it's published.
 
-## What it actually does
+## What it does
 
 - **`src/process_model.py`** — typed process steps (start/task/
   decision/end) with owners and defined flow, a process register, and a
@@ -45,8 +39,8 @@ commercial BPM tool.
   something unnavigable.
 - **`src/change_requests.py`** — filtering and summarizing change
   requests by status, and finding the oldest open request — the
-  "requests for documentation and implementation" workflow the posting
-  names, made queryable rather than an unordered list.
+  documentation-and-implementation request workflow, made queryable
+  rather than an unordered list.
 - **`src/flowchart.py`** — renders a process's steps as a real PNG
   flowchart via Graphviz, with shape/color conventions for start, task,
   decision, and end steps, and labeled decision branches.
@@ -54,14 +48,12 @@ commercial BPM tool.
   console report, and writes real PNG flowcharts to `output/` (see
   sample output below, copied from an actual run).
 
-## Verification
+## Testing
 
-21 automated tests (`tests/`), all passing on the first run — stated
-honestly rather than inventing a bug: the reachability check in
-particular was written test-first against several deliberately broken
-flows (an infinite loop, a missing start step) before being run against
-the real process data, which likely caught issues before they became
-test failures.
+21 automated tests (`tests/`), all passing on the first run. The
+reachability check in particular was written test-first against several
+deliberately broken flows (an infinite loop, a missing start step)
+before being run against the process data.
 
 ```bash
 python3 -m pytest -v      # 21 tests, all passing
@@ -101,16 +93,10 @@ path. The rendered PR01 flowchart shows a genuinely correct diagram,
 including the "no" branch looping back to re-verify documents before
 proceeding.
 
-## Honest limitations
+## Notes
 
-- All process, step, and change-request data is synthetic — no real
-  Infineon process documentation was accessed or used.
-- Diagrams are rendered with open-source Graphviz, not a licensed
-  enterprise process-modeling tool — the underlying skill (correct,
-  legible graphical process representation from structured data) is
-  real and demonstrated, but this is not a claim of Signavio/ARIS/Visio
-  experience specifically.
+- All process, step, and change-request data is synthetic.
 - The process model is intentionally simple (linear steps and binary
-  decisions) — a production business-process tool would need to handle
+  decisions); a production business-process tool would also handle
   parallel branches, sub-processes, and swimlanes, which this project
   does not attempt.

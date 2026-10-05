@@ -2,14 +2,14 @@
 A structured business-process register: processes made of typed steps
 (task, decision, start, end) with owners and a defined flow, plus
 change requests for documentation updates -- the underlying data model
-the posting's "documentation of business processes in a professional
-tool" and "requests for documentation and implementation" tasks need,
+that documenting business processes in a structured tool and handling
+requests for documentation and implementation need,
 built and stored as real, inspectable, testable structures rather than
 free-text descriptions.
 
 All process content below is invented, modeled loosely on a fictional
 company's supplier-onboarding and expense-approval processes -- not
-real Infineon process data.
+real process data from any company.
 """
 
 from __future__ import annotations

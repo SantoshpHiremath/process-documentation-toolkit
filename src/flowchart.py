@@ -1,7 +1,7 @@
 """
 Renders a process's steps as a real flowchart image via Graphviz --
 the "editorial work and graphical representation of the processes"
-task the posting names directly. Not a claim of experience with a
+task. Not a claim of experience with a
 specific enterprise process-modeling tool (e.g. Signavio, ARIS,
 Visio) -- this uses open-source Graphviz to produce an actual,
 inspectable diagram from the structured process data, honestly
